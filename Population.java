@@ -17,8 +17,6 @@ public class Population {
 		this.elitismRatio = elitismRatio;
 		this.mutationRatio = mutationRatio;
 
-
-
 		//make initial population
 		this.popArr = new Chromosome[size];
 		for (int i = 0; i < size; i++) {
@@ -43,6 +41,7 @@ public class Population {
 
 				//check if the 1st child should be mutated
 				//TODO: figure out idx++ vs idx w/ child 0 & 1
+				//and why 2 children??
 				if (rand.nextFloat() <= mutationRatio) {
 					buffer[idx++] = children[0].mutate();
 				} else {
