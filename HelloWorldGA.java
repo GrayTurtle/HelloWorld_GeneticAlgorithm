@@ -5,11 +5,11 @@ public class HelloWorldGA {
 
 		final int maxGenerations = 16384;
 
-		final float crossoverRatio = 0.8;
+		final float crossoverRatio = 0.8f;
 
-		final float elitismRatio = 0.1;
+		final float elitismRatio = 0.1f;
 
-		final float mutationRatio = 0.03;
+		final float mutationRatio = 0.03f;
 
 		//initialize the population
 		Population population = new Population(populationSize, crossoverRatio,

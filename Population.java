@@ -8,14 +8,16 @@ public class Population {
 	private float crossoverRatio;
 	private Chromosome[] popArr;
 
-	public Population(int size, int crossoverRatio, float elitismRatio, float mutationRatio) {
+	private static final int TOURNAMENT_SIZE = 3;
+
+	Random rand = new Random();
+
+	public Population(int size, float crossoverRatio, float elitismRatio, float mutationRatio) {
 		this.crossoverRatio = crossoverRatio;
 		this.elitismRatio = elitismRatio;
 		this.mutationRatio = mutationRatio;
 
-		private static final int TOURNAMENT_SIZE = 3;
 
-		Random rand = new Random();
 
 		//make initial population
 		this.popArr = new Chromosome[size];
@@ -66,7 +68,7 @@ public class Population {
 
 			++idx;
 		}
-		Array.sort(buffer);
+		Arrays.sort(buffer);
 
 		popArr = buffer;
 	}
