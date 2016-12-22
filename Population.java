@@ -13,6 +13,8 @@ public class Population {
 		this.elitismRatio = elitismRatio;
 		this.mutationRatio = mutationRatio;
 
+		private static final int TOURNAMENT_SIZE = 3;
+
 		Random rand = new Random();
 
 		//make initial population
@@ -68,4 +70,30 @@ public class Population {
 
 		popArr = buffer;
 	}
+
+	//TODO: figure out copy or no copy?
+	public Chromosome[] getPopulation() {
+		return popArr;
+	}
+
+	//choose 2 random parents from the population to crossover
+	//using tournament selection
+	private Chromosome[] selectParents() {
+		Chromosome[] parents = new Chromosome[2];
+
+		for (int i = 0; i < 2; i ++) {
+			parents[i] = popArr[rand.nextInt(popArr.length)];
+			for (int j = 0; j < TOURNAMENT_SIZE; j++) {
+				int idx = rand.nextInt(popArr.length);
+
+				//overrided compareTo for choosing the one w/ best fitness
+				if (popArr[idx].compareTo(parents[i]) < 0) {
+					parents[i] = popArr[idx];
+				}
+			}
+		}
+		return parents;
+	}
+
+
 }
