@@ -3,7 +3,7 @@ public class Chromosome implements Comparable<Chromosome> {
 	private final String gene;
 	private final int fitness;
 
-	private static final char[] TARGET_GENE = "Hello, world!".toCharArray();
+	private static final char[] TARGET_GENE = "Hello world!".toCharArray();
 
 	private static final Random rand = new Random();
 
@@ -60,11 +60,21 @@ public class Chromosome implements Comparable<Chromosome> {
 	}
 
 	public static Chromosome generateRandom() {
-		return null;
+		char[] arr = new char[TARGET_GENE.length];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = (char)(rand.nextInt(90) + 32);
+		}
+
+		return new Chromosome(String.valueOf(arr));
 	}
 
 	public int compareTo(Chromosome c) {
-		return -1;
+		if (fitness < c.fitness) {
+			return -1;
+		} else if (fitness > c.fitness) {
+			return 1;
+		}
+			return 0;
 	}
 
 }
