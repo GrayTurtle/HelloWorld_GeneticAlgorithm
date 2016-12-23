@@ -40,7 +40,19 @@ public class Chromosome implements Comparable<Chromosome> {
 	}
 
 	public Chromosome[] mate(Chromosome mate) {
-		
+		char[] gene1 = gene.toCharArray();
+		char[] gene2 = mate.gene.toCharArray();
+
+		return null;
+
+	}
+
+	public static Chromosome generateRandom() {
+		return null;
+	}
+
+	public int compareTo(Chromosome c) {
+		return -1;
 	}
 
 }
