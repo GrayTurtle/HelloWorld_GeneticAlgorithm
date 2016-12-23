@@ -10,14 +10,14 @@ public class Population {
 
 	private static final int TOURNAMENT_SIZE = 3;
 
-	private static final Random rand = new Random();
+	private static Random rand = new Random();
 
 	public Population(int size, float crossoverRatio, float elitismRatio, float mutationRatio) {
 		this.crossoverRatio = crossoverRatio;
 		this.elitismRatio = elitismRatio;
 		this.mutationRatio = mutationRatio;
 
-		//make initial population
+		//make initial population with random strings
 		this.popArr = new Chromosome[size];
 		for (int i = 0; i < size; i++) {
 			this.popArr[i] = Chromosome.generateRandom();
@@ -40,8 +40,6 @@ public class Population {
 				Chromosome[] children = parents[0].mate(parents[1]);
 
 				//check if the 1st child should be mutated
-				//TODO: figure out idx++ vs idx w/ child 0 & 1
-				//and why 2 children??
 				if (rand.nextFloat() <= mutationRatio) {
 					buffer[idx++] = children[0].mutate();
 				} else {
@@ -72,7 +70,6 @@ public class Population {
 		popArr = buffer;
 	}
 
-	//TODO: figure out copy or no copy?
 	public Chromosome[] getPopulation() {
 		return popArr;
 	}

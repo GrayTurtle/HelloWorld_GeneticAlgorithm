@@ -3,6 +3,7 @@ public class Chromosome implements Comparable<Chromosome> {
 	private final String gene;
 	private final int fitness;
 
+	//can be any string
 	private static final char[] TARGET_GENE = "Hello world!".toCharArray();
 
 	private static final Random rand = new Random();
@@ -20,7 +21,9 @@ public class Chromosome implements Comparable<Chromosome> {
 		return fitness;
 	}
 
-	//static??
+	//calculates fitness with the abs val of the difference
+	//between the gene and the target gene. If the fitness is closer
+	//to 0, it has higher fitness.
 	private int calculateFitness(String gene) {
 		int fitness = 0;
 		char[] arr = gene.toCharArray();
@@ -30,6 +33,7 @@ public class Chromosome implements Comparable<Chromosome> {
 		return fitness;
 	}
 
+	//change a random charactor in the gene
 	public Chromosome mutate() {
 		char[] arr = gene.toCharArray();
 		int idx = rand.nextInt(arr.length);
@@ -39,6 +43,8 @@ public class Chromosome implements Comparable<Chromosome> {
 		return new Chromosome(String.valueOf(arr));
 	}
 
+	//mates by copying from halves that are create from a randomly chosen
+	//pivot point
 	public Chromosome[] mate(Chromosome mate) {
 		char[] gene1 = gene.toCharArray();
 		char[] gene2 = mate.gene.toCharArray();
@@ -56,9 +62,9 @@ public class Chromosome implements Comparable<Chromosome> {
 
 		return new Chromosome[] {new Chromosome(String.valueOf(child1)),
 								 new Chromosome(String.valueOf(child2))};
-
 	}
 
+	//makes random string
 	public static Chromosome generateRandom() {
 		char[] arr = new char[TARGET_GENE.length];
 		for (int i = 0; i < arr.length; i++) {
@@ -68,6 +74,7 @@ public class Chromosome implements Comparable<Chromosome> {
 		return new Chromosome(String.valueOf(arr));
 	}
 
+	//overrides compareTo
 	public int compareTo(Chromosome c) {
 		if (fitness < c.fitness) {
 			return -1;

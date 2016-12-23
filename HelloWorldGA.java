@@ -7,6 +7,7 @@ public class HelloWorldGA {
 
 		final float crossoverRatio = 0.8f;
 
+		//ratio of the population that will stay the same
 		final float elitismRatio = 0.1f;
 
 		final float mutationRatio = 0.03f;
