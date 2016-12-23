@@ -10,7 +10,7 @@ public class Population {
 
 	private static final int TOURNAMENT_SIZE = 3;
 
-	Random rand = new Random();
+	private static final Random rand = new Random();
 
 	public Population(int size, float crossoverRatio, float elitismRatio, float mutationRatio) {
 		this.crossoverRatio = crossoverRatio;
