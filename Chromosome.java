@@ -43,7 +43,19 @@ public class Chromosome implements Comparable<Chromosome> {
 		char[] gene1 = gene.toCharArray();
 		char[] gene2 = mate.gene.toCharArray();
 
-		return null;
+		int pivot = rand.nextInt(gene1.length);
+
+		char[] child1 = new char[gene.length()];
+		char[] child2 = new char[gene.length()];
+
+		System.arraycopy(gene1, 0, child1, 0, pivot);
+		System.arraycopy(gene2, pivot, child1, pivot, (child1.length - pivot));
+
+		System.arraycopy(gene2, 0, child2, 0, pivot);
+		System.arraycopy(gene1, pivot, child2, pivot, (child2.length - pivot));
+
+		return new Chromosome[] {new Chromosome(String.valueOf(child1)),
+								 new Chromosome(String.valueOf(child2))};
 
 	}
 
